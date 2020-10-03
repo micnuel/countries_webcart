@@ -1,59 +1,59 @@
 // Action types
-export const ADD_COUNTRY= 'ADD_COUNTRY'
+export const ADD_COUNTRY = 'ADD_COUNTRY'
 export const REMOVE_COUNTRY = 'REMOVE_COUNTRY'
-export const SEARCH_COUNTRY ='SEARCH_COUNTRY'
+export const SEARCH_COUNTRY = 'SEARCH_COUNTRY'
 export const FETCH_COUNTRIES = 'FETCH_COUNTRIES'
 
-export type SetCountriesAction ={
+export type SetCountriesAction = {
   type: typeof FETCH_COUNTRIES
-  payload:{
-    countries:Country [],
+  payload: {
+    countries: Country[]
   }
 }
 
-export type CountriesState =
-cartState & countryState
+export type CountriesState = cartState & countryState
 
-export type cartState ={
-  inCart:Country []
+export type cartState = {
+  inCart: Country[]
 }
-export type countryState ={
-  countries: Country []
+export type countryState = {
+  countries: Country[]
 }
 
-export type Country= {
- name:string
- region:string
- population:number,
- flag:string,
- languages:Language[]
- id:number |undefined
-} 
+export type Country = {
+  name: string
+  region: string
+  population: number
+  flag: string
+  languages: Language[]
+  id: number | undefined
+  nativeName: string
+}
 
-export type Countries = Country []
+export type Countries = Country[]
 
-export type Language ={
-  name:string
+export type Language = {
+  name: string
 }
 
 export type AddCountryAction = {
   type: typeof ADD_COUNTRY
   payload: {
-    country: Country,
+    country: Country
   }
 }
 
 export type RemoveCountryAction = {
   type: typeof REMOVE_COUNTRY
   payload: {
-    country: Country,
+    country: Country
   }
 }
 
 export type searchCountryAction = {
   type: typeof SEARCH_COUNTRY
   payload: {
-    countries:Country [],
+    countries: Country[]
   }
 }
 
@@ -65,6 +65,5 @@ export type CountryActions =
   | searchCountryAction
 
 export type AppState = {
-  countries: CountriesState 
+  countries: CountriesState
 }
-
