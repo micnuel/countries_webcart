@@ -33,7 +33,7 @@ export default function Home() {
         <div>
           <Button
             disabled={
-              countriesInCart.find((p) => p.id === row.id) ? true : false
+              countriesInCart.find((p) => p.id == row.id) ? true : false
             }
             onClick={() => dispatch(addCountry(countries[row.id]))}
             style={{ background: theme.button, color: theme.text }}

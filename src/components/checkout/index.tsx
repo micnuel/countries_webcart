@@ -1,16 +1,15 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Button, List, Image, Modal, Icon } from 'semantic-ui-react'
+import { Button, List, Image, Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 import { removeCountry } from '../../redux/actions'
 import { AppState } from '../../types'
-import { ThemeContext } from '../../context'
 
 import './checkout.css'
 
 function CheckoutCart() {
-  const { theme } = useContext(ThemeContext)
+  //const { theme } = useContext(ThemeContext)
   const dispatch = useDispatch()
   const countriesInCart = useSelector(
     (state: AppState) => state.countries.inCart

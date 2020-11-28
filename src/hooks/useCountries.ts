@@ -20,11 +20,11 @@ const useCountries = (query: string) => {
   function searchedCountry(allCountries: Countries, query: string) {
     return allCountries
       ? allCountries.filter(
-          (country: Country) =>
-            country.name.toLowerCase().includes(query.toLowerCase()) ||
+        (country: Country) =>
+          country.name.toLowerCase().includes(query.toLowerCase()) ||
             country.region.toLowerCase().includes(query.toLowerCase()) ||
             country.nativeName.toLowerCase().includes(query.toLowerCase())
-        )
+      )
       : []
   }
   console.log(countriesList)

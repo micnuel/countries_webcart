@@ -10,7 +10,7 @@ export default function CountryPage() {
   const { id } = useParams()
   console.log(typeof id)
   const country = useSelector((state: AppState) =>
-    state.countries.countries.find((p) => p.id == id)
+    state.countries.countries.find((p) => p.id === id)
   )
   if (!country) {
     return <h4> Country not found!</h4>

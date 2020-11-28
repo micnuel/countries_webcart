@@ -10,7 +10,7 @@ export const columns = [
     name: 'Flag',
     cell: (row: any) => (
       <div>
-        <img width="40px" height="40px" src={`${row.flag}`} />
+        <img width="40px" height="40px" src={`${row.flag}`} alt="Flag" />
       </div>
     ),
   },
