@@ -1,0 +1,35 @@
+name: Country App workflow
+on: [push, pull_request]
+
+  jobs:
+    build:
+      runs-on: ubuntu-latest
+      strategy:
+        matrix:
+          node: [10.x, 12.x]
+      
+      steps: 
+        - name: Setup Node
+          uses: actions/setup-node@v1
+          with: 
+            node-version: ${{ matrix.node}}
+        
+        - name: Checkout
+          uses: actions/checkout@v2
+
+        - name: Setup cache
+          uses: actions/cache@v1
+          with: 
+            key: ${{ runner.os}}-install-${{ hashFiles('**/package-lock.json')}}
+            restore-key: |
+              ${{ runner.os}}-install-
+              ${{ runner.os}}-
+        
+        - name: Install
+          run: npm ci
+
+        - name: Lint
+          run: npm run lint
+
+        - name: Test
+          run: npm test

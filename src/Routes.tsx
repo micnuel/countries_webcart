@@ -1,8 +1,9 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 
-import Home from './pages/Home'
-import Product from './pages/Product'
+import Home from './components/home'
+import CountryPage from './components/country'
+import CheckoutCart from './components/checkout'
 
 const Routes = () => (
   <Switch>
@@ -13,9 +14,15 @@ const Routes = () => (
     />
     <Route
       exact
-      path='/products/:id'
-      component={ Product }
+      path='/country/:id'
+      component={ CountryPage }
     />
+    <Route
+      exact
+      path='/cart'
+      component={ CheckoutCart }
+    />
+
   </Switch>
 )
 

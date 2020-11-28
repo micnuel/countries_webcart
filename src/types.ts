@@ -1,61 +1,69 @@
 // Action types
-export const ADD_PRODUCT = 'ADD_PRODUCT'
-export const REMOVE_PRODUCT = 'REMOVE_PRODUCT'
-export const TOGGLE_DIALOG = 'TOGGLE_DIALOG'
+export const ADD_COUNTRY = 'ADD_COUNTRY'
+export const REMOVE_COUNTRY = 'REMOVE_COUNTRY'
+export const SEARCH_COUNTRY = 'SEARCH_COUNTRY'
+export const FETCH_COUNTRIES = 'FETCH_COUNTRIES'
 
-// Enum
-export enum DialogType {
-  SignIn = 'signIn',
-  SignUp = 'signUp',
+export type SetCountriesAction = {
+  type: typeof FETCH_COUNTRIES
+  payload: {
+    countries: Country[]
+  }
 }
 
-// A product
-export type Product = {
-  id: string
+export type CountriesState = cartState & countryState
+
+export type cartState = {
+  inCart: Country[]
+}
+export type countryState = {
+  countries: Country[]
+}
+
+export type Country = {
   name: string
-  price: number
+  region: string
+  population: number
+  flag: string
+  languages: Language[]
+  id: number | undefined
+  nativeName: string
 }
 
-export type AddProductAction = {
-  type: typeof ADD_PRODUCT
+export type Countries = Country[]
+
+export type Language = {
+  name: string
+}
+
+export type AddCountryAction = {
+  type: typeof ADD_COUNTRY
   payload: {
-    product: Product,
+    country: Country
   }
 }
 
-export type RemoveProductAction = {
-  type: typeof REMOVE_PRODUCT
+export type RemoveCountryAction = {
+  type: typeof REMOVE_COUNTRY
   payload: {
-    product: Product,
+    country: Country
   }
 }
 
-export type ToggleDialogAction = {
-  type: typeof TOGGLE_DIALOG
+export type searchCountryAction = {
+  type: typeof SEARCH_COUNTRY
   payload: {
-    dialog: DialogType,
+    countries: Country[]
   }
 }
-
-export type UiActions = ToggleDialogAction
 
 // Use this union in reducer
-export type ProductActions =
-  | AddProductAction
-  | RemoveProductAction
-
-export type ProductState = {
-  inCart: Product[]
-}
-
-// Using dynamic keys from an enum
-export type UiState = {
-  dialogOpen: {
-    [key in DialogType]?: boolean
-  }
-}
+export type CountryActions =
+  | AddCountryAction
+  | RemoveCountryAction
+  | SetCountriesAction
+  | searchCountryAction
 
 export type AppState = {
-  product: ProductState,
-  ui: UiState,
+  countries: CountriesState
 }
